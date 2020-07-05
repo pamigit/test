@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <title>Test</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="" />
+        <meta name="keywords" content="test">
+        <meta name="author" content="Pamela Prascevic, pamizoki@gmail.com">
+
+        <link href="styles/index.css" rel="stylesheet" type="text/css" media="screen">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a id="mobile" class="tab__registration" href="#" onclick="active(this)">Mobile Registration</a></li>
+                    <li><a id="email" class="tab__registration" href="#" onclick="active(this)">Email Registration</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class="container">
+            <h1>Create Registration</h1>
+            <form name="RegForm" onsubmit="return false" >
+                <fieldset>
+                    <div id="email_section" class="form__row section">
+                        <div class="form__row--short">
+                            <label for="email">Email</label>
+                        </div>
+                        <div class="form__row--long">
+                            <input type="text" id="email" name="email" placeholder="Your email..">
+                        </div>
+                        <div id="error_email" class="form__row--long error"></div>
+                    </div>
+                    <div id="mobile_section" class="form__row section">
+                        <div class="form__row--short">
+                            <label for="mobile">Mobile</label>
+                        </div>
+                        <div class="form__row--long">
+                            <input type="text" id="mobile" name="mobile" placeholder="Your mobile number..">
+                        </div>
+                        <div id="error_mobile" class="form__row--long error"></div>
+                    </div>
+                    
+                    <div class="form__row">
+                        <div class="form__row--short">
+                            <label for="currency">Currency:</label> 
+                        </div>
+                        <div class="form__row--long">
+                            <input id="usd" name="currency" type="radio" value="usd"> 
+                            <label for="usd">USD</label>
+                            <input id="rsd" name="currency" type="radio" value="rsd"> 
+                            <label for="rsd">RSD</label> 
+                            <input id="euro" name="currency" type="radio" value="euro"> 
+                            <label for="euro">EURO</label>
+                        </div>
+                        <div id="error_currency" class="form__row--long error"></div>
+                    </div>
+
+                    <label for="check_terms">Check before registration:</label> 
+                    <div class="form__row">
+                        <input id="term" name="check_terms" type="checkbox" value="term"> 
+                        <label for="term">Private terms</label> 
+                    </div>
+                    <div class="form__row">
+                        <input id="condition" name="check_terms" type="checkbox" value="condition"> 
+                        <label for="condition">Check if agree with conditions</label> 
+                    </div>
+                    <div class="form__row">
+                        <input id="notification" name="check_terms" type="checkbox" value="notification"> 
+                        <label for="notification">Check for email notification</label>
+                    </div>
+                    <div id="error_check_conditions" class="form__row error"></div>
+
+                    <div class="form__row">
+                        <button type="submit" onclick="validateRegistration()">Registration<span class="spinner"></span></button>
+                    </div>
+                </fieldset>
+            </form>
+        </main>
+        <footer>
+            Copyright © 2020 Pamela Prascevic
+        </footer>
+
+        <script src="scripts/index.js"></script>
+    </body>
+</html>

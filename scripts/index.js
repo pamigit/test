@@ -46,14 +46,16 @@ function validateRegistration() {
     var checks =  document.forms["RegForm"]["check_terms"];
      
     if(emailMode) {
-        if (email.value == "" || !(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test(email.value)))                                   
+        if (email.value == "" || email.value.match(/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/) == null )    //.test(email.value))                             
         { 
             removeSpinner();
             document.querySelector("#error_email").style.display = "block";
             document.querySelector("#error_email").innerHTML = '<sup>*</sup>Please enter a valid email address!';
             email.focus(); 
             return false; 
-        } 
+        } else {
+            document.querySelector("#error_email").style.display = "none";
+        }
     } else {
         if (mobile.value == "" || mobile.value.match(/^((\+|00)?\d{1,3})?[1-9][0-9]{9}$/) == null)                           
         { 
@@ -62,7 +64,9 @@ function validateRegistration() {
             document.querySelector("#error_mobile").innerHTML = '<sup>*</sup>Please enter a valid mobile number!';
             mobile.focus(); 
             return false; 
-        } 
+        } else {
+            document.querySelector("#error_mobile").style.display = "none";
+        }
     }
    
     if (currency[0].checked == false && currency[1].checked == false && currency[2].checked == false) 
@@ -71,7 +75,9 @@ function validateRegistration() {
         document.querySelector("#error_currency").style.display = "block";
         document.querySelector("#error_currency").innerHTML = '<sup>*</sup>Please select currency!';
         return false;
-    } 
+    } else {
+        document.querySelector("#error_currency").style.display = "none";
+    }
 
     if (checks[0].checked == false || checks[1].checked == false || checks[2].checked == false) 
     {
@@ -79,7 +85,9 @@ function validateRegistration() {
         document.querySelector("#error_check_conditions").style.display = "block";
         document.querySelector("#error_check_conditions").innerHTML = '<sup>*</sup>Please check all conditions!';
         return false;
-    } 
+    } else {
+        document.querySelector("#error_check_conditions").style.display = "none";
+    }
    
     document.querySelectorAll(".error").forEach(function(err) {
         err.style.display = "none";
